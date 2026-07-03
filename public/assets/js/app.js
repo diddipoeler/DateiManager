@@ -1,3 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DateiManager v0.1.0 geladen');
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("DateiManager gestartet");
+
+    document
+        .querySelectorAll(".file-card")
+        .forEach(card => {
+
+            card.addEventListener("mouseenter", () => {
+
+                card.classList.add("shadow");
+
+            });
+
+            card.addEventListener("mouseleave", () => {
+
+                card.classList.remove("shadow");
+
+            });
+
+        });
+
 });

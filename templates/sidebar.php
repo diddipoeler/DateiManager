@@ -1,17 +1,123 @@
-<aside class="col-lg-2 col-md-3 sidebar border-end bg-white p-3">
-    <div class="d-grid gap-2">
-        <a class="btn btn-outline-primary text-start" href="index.php">
-            <i class="bi bi-house-door me-2"></i>Start
-        </a>
-        <button class="btn btn-outline-secondary text-start" disabled>
-            <i class="bi bi-upload me-2"></i>Upload folgt
-        </button>
-        <button class="btn btn-outline-secondary text-start" disabled>
-            <i class="bi bi-search me-2"></i>Suche folgt
-        </button>
+<?php
+
+declare(strict_types=1);
+
+use App\Helpers\Helpers;
+
+/*
+|--------------------------------------------------------------------------
+| Sidebar
+|--------------------------------------------------------------------------
+|
+| Diese Navigation wird später dynamisch erweitert.
+|
+*/
+?>
+
+<aside class="sidebar">
+
+    <div class="sidebar-header">
+
+        <h5>
+
+            <i class="bi bi-folder2-open"></i>
+
+            DateiManager
+
+        </h5>
+
     </div>
+
+    <nav class="sidebar-nav">
+
+        <ul class="nav flex-column">
+
+            <li class="nav-item">
+
+                <a
+                    class="nav-link active"
+                    href="index.php">
+
+                    <i class="bi bi-house-door"></i>
+
+                    Home
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a
+                    class="nav-link"
+                    href="?dir=<?= urlencode($manager->getRoot()) ?>">
+
+                    <i class="bi bi-folder-fill"></i>
+
+                    Dateien
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a
+                    class="nav-link"
+                    href="#">
+
+                    <i class="bi bi-upload"></i>
+
+                    Uploads
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a
+                    class="nav-link"
+                    href="#">
+
+                    <i class="bi bi-images"></i>
+
+                    Bilder
+
+                </a>
+
+            </li>
+
+            <li class="nav-item">
+
+                <a
+                    class="nav-link"
+                    href="#">
+
+                    <i class="bi bi-file-earmark-text"></i>
+
+                    Dokumente
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
     <hr>
-    <div class="small text-muted">
-        Dieses Grundsystem ist vorbereitet für Navigation, Uploads und Vorschau.
+
+    <div class="sidebar-footer">
+
+        <div class="small text-muted">
+
+            Version
+
+            <?= Helpers::e(Config::VERSION) ?>
+
+        </div>
+
     </div>
+
 </aside>

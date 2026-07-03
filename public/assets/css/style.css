@@ -1,15 +1,108 @@
-:root {
-    --dm-sidebar-width: 260px;
+:root{
+
+    --sidebar-width:260px;
+
+    --header-height:60px;
+
+    --background:#f5f7fa;
+
+    --sidebar:#ffffff;
+
+    --primary:#0d6efd;
+
+    --border:#dee2e6;
+
 }
 
-body {
-    background: #f8f9fa;
+html,
+body{
+
+    height:100%;
+
+    margin:0;
+
+    background:var(--background);
+
+    font-family:Segoe UI,Arial,sans-serif;
+
 }
 
-.sidebar {
-    min-height: calc(100vh - 56px);
+.app-wrapper{
+
+    display:flex;
+
+    min-height:100vh;
+
 }
 
-.card {
-    border-radius: 1rem;
+.sidebar{
+
+    width:var(--sidebar-width);
+
+    background:var(--sidebar);
+
+    border-right:1px solid var(--border);
+
+    padding:20px;
+
+}
+
+.app-main{
+
+    flex:1;
+
+    padding:25px;
+
+}
+
+.file-card{
+
+    transition:.2s;
+
+    cursor:pointer;
+
+}
+
+.file-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.footer{
+
+    background:#fff;
+
+    padding:15px;
+
+}
+
+.nav-link{
+
+    border-radius:6px;
+
+}
+
+.nav-link:hover{
+
+    background:#eef4ff;
+
+}
+
+@media (max-width:992px){
+
+.sidebar{
+
+    width:100%;
+
+}
+
+.app-wrapper{
+
+    display:block;
+
+}
+
 }
