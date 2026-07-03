@@ -1,23 +1,33 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Core\Config;
+use App\Helpers\Helpers;
+
+$pageTitle = $title ?? Config::APP_NAME;
+
+?>
 <!doctype html>
 <html lang="de">
-
-<?php require __DIR__.'/header.php'; ?>
-
+<head>
+    <?php require __DIR__ . '/header.php'; ?>
+</head>
 <body>
 
-<div class="wrapper">
+<div class="app-wrapper">
 
-    <?php require __DIR__.'/sidebar.php'; ?>
+    <?php require __DIR__ . '/sidebar.php'; ?>
 
-    <main class="content">
+    <main class="app-main">
 
-        <?php require $view; ?>
+        <?php require __DIR__ . '/' . $view . '.php'; ?>
 
     </main>
 
 </div>
 
-<?php require __DIR__.'/footer.php'; ?>
+<?php require __DIR__ . '/footer.php'; ?>
 
 </body>
 </html>
