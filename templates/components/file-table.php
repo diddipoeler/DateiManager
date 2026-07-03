@@ -4,6 +4,33 @@ declare(strict_types=1);
 
 use App\Helpers\Helpers;
 
+$search = trim((string) ($_GET['search'] ?? ''));
+$sort = trim((string) ($_GET['sort'] ?? 'name'));
+$direction = trim((string) ($_GET['direction'] ?? 'asc'));
+$view = trim((string) ($_GET['view'] ?? 'list'));
+
+$buildUrl = static function (string $directory) use (
+    $search,
+    $sort,
+    $direction,
+    $view
+): string {
+    $parameters = [
+        'dir' => $directory,
+        'search' => $search,
+        'sort' => $sort,
+        'direction' => $direction,
+        'view' => $view,
+    ];
+
+    $parameters = array_filter(
+        $parameters,
+        static fn (string $value): bool => $value !== ''
+    );
+
+    return '?' . http_build_query($parameters);
+};
+
 ?>
 
 <div class="card shadow-sm">
@@ -48,7 +75,7 @@ use App\Helpers\Helpers;
 
                         <?php if ($item['is_dir']): ?>
 
-                            <a href="?dir=<?= urlencode($item['path']) ?>">
+                            <a href="<?= Helpers::e($buildUrl($item['path'])) ?>">
 
                                 <?= Helpers::e($item['name']) ?>
 
@@ -86,7 +113,7 @@ use App\Helpers\Helpers;
 
                             <a
                                 class="btn btn-sm btn-primary"
-                                href="?dir=<?= urlencode($item['path']) ?>">
+                                href="<?= Helpers::e($buildUrl($item['path'])) ?>">
 
                                 Öffnen
 
@@ -117,3 +144,4 @@ use App\Helpers\Helpers;
     </div>
 
 </div>
+

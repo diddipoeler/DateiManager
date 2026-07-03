@@ -7,9 +7,29 @@ use App\Helpers\Helpers;
 /** @var array $item */
 /** @var App\Core\FileManager $manager */
 
-$link = $item['is_dir']
-    ? '?dir=' . urlencode($item['path'])
-    : '#';
+$search = trim((string) ($_GET['search'] ?? ''));
+$sort = trim((string) ($_GET['sort'] ?? 'name'));
+$direction = trim((string) ($_GET['direction'] ?? 'asc'));
+$view = trim((string) ($_GET['view'] ?? 'grid'));
+
+$link = '#';
+
+if ($item['is_dir']) {
+    $parameters = [
+        'dir' => $item['path'],
+        'search' => $search,
+        'sort' => $sort,
+        'direction' => $direction,
+        'view' => $view,
+    ];
+
+    $parameters = array_filter(
+        $parameters,
+        static fn (string $value): bool => $value !== ''
+    );
+
+    $link = '?' . http_build_query($parameters);
+}
 
 ?>
 
@@ -62,7 +82,7 @@ $link = $item['is_dir']
             <?php if ($item['is_dir']): ?>
 
                 <a
-                    href="<?= $link ?>"
+                    href="<?= Helpers::e($link) ?>"
                     class="btn btn-primary w-100">
 
                     <i class="bi bi-folder2-open"></i>

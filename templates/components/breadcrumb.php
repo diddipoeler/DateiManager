@@ -13,6 +13,33 @@ use App\Helpers\Helpers;
 
 $breadcrumbs = $manager->breadcrumb();
 
+$search = trim((string) ($_GET['search'] ?? ''));
+$sort = trim((string) ($_GET['sort'] ?? 'name'));
+$direction = trim((string) ($_GET['direction'] ?? 'asc'));
+$view = trim((string) ($_GET['view'] ?? 'grid'));
+
+$buildUrl = static function (string $directory) use (
+    $search,
+    $sort,
+    $direction,
+    $view
+): string {
+    $parameters = [
+        'dir' => $directory,
+        'search' => $search,
+        'sort' => $sort,
+        'direction' => $direction,
+        'view' => $view,
+    ];
+
+    $parameters = array_filter(
+        $parameters,
+        static fn (string $value): bool => $value !== ''
+    );
+
+    return '?' . http_build_query($parameters);
+};
+
 ?>
 
 <nav aria-label="breadcrumb" class="mb-3">
@@ -21,7 +48,7 @@ $breadcrumbs = $manager->breadcrumb();
 
         <li class="breadcrumb-item">
 
-            <a href="index.php">
+            <a href="<?= Helpers::e($buildUrl('')) ?>">
 
                 <i class="bi bi-house-door-fill"></i>
 
@@ -35,7 +62,7 @@ $breadcrumbs = $manager->breadcrumb();
 
             <li class="breadcrumb-item">
 
-                <a href="?dir=<?= urlencode($crumb['path']) ?>">
+                <a href="<?= Helpers::e($buildUrl($crumb['path'])) ?>">
 
                     <?= Helpers::e($crumb['name']) ?>
 
