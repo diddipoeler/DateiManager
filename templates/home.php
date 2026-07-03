@@ -20,15 +20,23 @@ declare(strict_types=1);
 
     <?php else: ?>
 
-        <div class="row">
+        <?php if ($view === 'list'): ?>
 
-            <?php foreach ($items as $item): ?>
+    <?php require __DIR__.'/components/file-table.php'; ?>
 
-                <?php require __DIR__ . '/components/file-card.php'; ?>
+<?php else: ?>
 
-            <?php endforeach; ?>
+    <div class="row">
 
-        </div>
+        <?php foreach ($items as $item): ?>
+
+            <?php require __DIR__.'/components/file-card.php'; ?>
+
+        <?php endforeach; ?>
+
+    </div>
+
+<?php endif; ?>
 
     <?php endif; ?>
 
