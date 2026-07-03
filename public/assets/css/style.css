@@ -1,0 +1,15 @@
+:root {
+    --dm-sidebar-width: 260px;
+}
+
+body {
+    background: #f8f9fa;
+}
+
+.sidebar {
+    min-height: calc(100vh - 56px);
+}
+
+.card {
+    border-radius: 1rem;
+}

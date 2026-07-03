@@ -1,6 +1,15 @@
-# PHP DateiManager
+# DateiManager
 
-Moderner PHP-Dateimanager als Git-Projekt.
+Moderner PHP-Dateimanager ohne Framework.
+
+## Version
+
+v0.1.0 – Grundsystem
+
+## Voraussetzungen
+
+- PHP 8.2 oder höher
+- Composer
 
 ## Installation
 
@@ -9,8 +18,26 @@ composer install
 php -S localhost:8000 -t public
 ```
 
-Dann öffnen: http://localhost:8000
+Danach im Browser öffnen:
 
-## Status
+```text
+http://localhost:8000
+```
 
-Paket 1: Grundsystem mit Verzeichnisanzeige, Suche, Sortierungsvorbereitung und Bootstrap-Oberfläche.
+## Enthalten in v0.1.0
+
+- PSR-4 Autoloading
+- MVC-Light Grundstruktur
+- Bootstrap 5 Oberfläche
+- Request-/Response-Klassen
+- View-System
+- Grundlayout
+- vorbereitet für Dateinavigation
+
+## Git
+
+```bash
+git add .
+git commit -m "v0.1.0 Initial project structure"
+git push origin main
+```
